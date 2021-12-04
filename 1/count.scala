@@ -23,7 +23,7 @@ for ( i <- 0 until sz ) {
 }
 println(count)
 
-// Refactor attempt #1
+// Refactoring attempt #1 using sliding
 def advent_day1(n: Int) = {
   val lines_roll = lines.sliding(n).map(_.sum).toList
   var count = 0
@@ -36,16 +36,16 @@ def advent_day1(n: Int) = {
   count
 }
 
-scala> advent_day1(1)
-val res7: Int = 1154
+advent_day1(1)
+advent_day1(3)
 
-scala> advent_day1(3)
-val res8: Int = 1127
-
-// Refactor attempt #2
+// Refactoring attempt #2 with tail + zip for Python shift
 def advent_day1(n: Int) = {
   val lines_roll = lines.sliding(n).map(_.sum).toList
   val lines_tail = lines_roll.tail
   val lines_roll_shift = lines_roll.zip(lines_tail)
   lines_roll_shift.filter(x => x._2 > x._1).size
 }
+
+advent_day1(1)
+advent_day1(3)

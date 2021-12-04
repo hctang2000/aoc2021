@@ -6,6 +6,6 @@ def advent_day1(n):
     lines_roll_shift = lines_roll.shift(-1)
     return (lines_roll_shift > lines_roll).sum()
     
-advent_day1(1) #1154
-advent_day1(3) #1127
+advent_day1(1)
+advent_day1(3)
 
