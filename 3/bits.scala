@@ -41,33 +41,39 @@ def getDecimal(binary : Array[Char]) = {
   result
 }
 
-var digits_cp = digits
+val digits_cp = digits
 val sz = digits(0).size
 
 var oxygen = 0
-for (i <- 0 until sz) {
-  if (digits.filter(x => x(i) == '1').size >= digits.filter(x => x(i) == '0').size) {
-    digits = digits.filter(x => x(i) == '1')
-  } else {
-    digits = digits.filter(x => x(i) == '0')
-  }
-  if (digits.size == 1) {
-    oxygen = getDecimal(digits(0).reverse)
-    break()
+breakable {
+  for (i <- 0 until sz) {
+    if (digits.filter(x => x(i) == '1').size >= digits.filter(x => x(i) == '0').size) {
+      digits = digits.filter(x => x(i) == '1')
+    } else {
+      digits = digits.filter(x => x(i) == '0')
+    }
+    if (digits.size == 1) {
+      //oxygen = getDecimal(digits(0).reverse)
+      oxygen = Integer.parseInt(digits(0).mkString, 2)
+      break()
+    }
   }
 }
 
 var digits = digits_cp
 var carbon = 0
-for (i <- 0 until sz) {
-  if (digits.filter(x => x(i) == '0').size <= digits.filter(x => x(i) == '1').size) {
-    digits = digits.filter(x => x(i) == '0')
-  } else {
-    digits = digits.filter(x => x(i) == '1')
-  }
-  if (digits.size == 1) {
-    carbon = getDecimal(digits(0).reverse)
-    break()
+breakable {
+  for (i <- 0 until sz) {
+    if (digits.filter(x => x(i) == '0').size <= digits.filter(x => x(i) == '1').size) {
+      digits = digits.filter(x => x(i) == '0')
+    } else {
+      digits = digits.filter(x => x(i) == '1')
+    }
+    if (digits.size == 1) {
+      //carbon = getDecimal(digits(0).reverse)
+      carbon = Integer.parseInt(digits(0).mkString, 2)
+      break()
+    }
   }
 }
 
