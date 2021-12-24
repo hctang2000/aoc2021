@@ -2,23 +2,6 @@ import scala.io.Source
 import scala.collection.mutable.ArrayBuffer
 import scala.util.control.Breaks._
 
-//can't use these functions, vis is problematic globally
-def foldy(y:Int) = {
-  for (i <- y+1 until vis.size) {
-    val row = i - (2 * (i - y))
-    for ( x <- 0 until vis(0).size) vis(row)(x) += vis(i)(x)
-    //for ( x <- 0 until vis(0).size) vis(i)(x) = 0
-  }
-}
-
-def foldx(x:Int) = {
-  for (j <- x+1 until vis(0).size) {
-    val col = j - (2 * (j - x))
-    for ( y <- 0 until vis.size) vis(y)(col) += vis(y)(j)
-    //for ( y <- 0 until vis.size) vis(y)(j) = 0
-  }
-}
-
 def counting() = {
   var count = 0
   for (i <- 0 until vis.size) {
