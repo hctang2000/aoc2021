@@ -49,3 +49,11 @@ def advent_day1(n: Int) = {
 
 advent_day1(1)
 advent_day1(3)
+
+// Refactoring attempt #3
+def advent_day1(n: Int) = {
+  lines.sliding(n).map(_.sum).sliding(2).foldLeft(0)((acc, x) => if (x(1) > x(0)) acc + 1 else acc )
+}
+
+advent_day1(1)
+advent_day1(3)
